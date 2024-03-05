@@ -5,6 +5,10 @@ using UnityEngine;
 public class BulletPoolManager : MonoBehaviour
 {
     public static BulletPoolManager Instance;
+    public GameObject bulletPrefab;
+    public int poolSize = 20;
+
+    private Queue<GameObject> bulletPool = new Queue<GameObject>();
     
     // Start is called before the first frame update
     void Awake()
@@ -13,9 +17,11 @@ public class BulletPoolManager : MonoBehaviour
         InitializePool();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void InitializePool() {
+        for (int i = 0; i < poolSize; i++){
+            GameObject newBullet = Instantiate(bulletPrefab);
+            newBullet.SetActive(false);
+            bulletPool.Enqueue(newBullet);
+        }
     }
 }
