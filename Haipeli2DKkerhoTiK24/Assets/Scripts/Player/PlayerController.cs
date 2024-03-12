@@ -36,5 +36,15 @@ public class PlayerController : MonoBehaviour
       Vector2 movement = new Vector2(moveInput.x, moveInput.y) * moveSpeed * Time.fixedDeltaTime;
       body.MovePosition(body.position + movement);
    }
+
+   private void Update() {
+      Shoot();
+   }
+
+   private void Shoot() {
+      if (controls.Player.Shoot.triggered){
+         Debug.Log("shoot nappula toimii");
+      }
+   }
    
 }
