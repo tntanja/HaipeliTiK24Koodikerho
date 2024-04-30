@@ -1,4 +1,4 @@
-public enum gameStates {
+public enum GameState {
     Gameplay,
     Pause
 }

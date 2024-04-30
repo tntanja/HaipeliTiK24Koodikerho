@@ -16,6 +16,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!GameManager.instance.IsGamePlay()) {
+            return;
+        }
+
         transform.Translate(Vector2.up * -1 * currentSpeed * Time.deltaTime);
 
         lifeTimer -= Time.deltaTime;    // lifeTimer = lifeTimer - Time.deltaTime;

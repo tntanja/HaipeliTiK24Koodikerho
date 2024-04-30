@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
    }
 
    private void Update() {
+      if (CheckGameState() == false) {
+         return;
+      }
+      
       Shoot();
       Aim();
    }
@@ -53,7 +57,7 @@ public class PlayerController : MonoBehaviour
          return false;
       }
    }
-   
+
    private void Shoot() {
       if (controls.Player.Shoot.triggered){
          Debug.Log("shoot nappula toimii");

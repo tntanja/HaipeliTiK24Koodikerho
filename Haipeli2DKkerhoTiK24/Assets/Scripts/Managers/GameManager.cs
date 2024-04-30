@@ -6,7 +6,9 @@ public class GameManager : MonoBehaviour
 {
     
     public static GameManager instance;
-    public gameStates currentGameState;
+    public GameState currentGameState;
+    private Master controls;
+    
     void Awake()
     {
         if(instance == null) {
@@ -17,7 +19,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnEnable() {
+      controls.Enable();   
+   }
+
+   private void OnDisable() {
+      controls.Disable(); 
+   }
+
     public bool IsGamePlay() {
-        return currentGameState == gameStates.Gameplay;
+        return currentGameState == GameState.Gameplay;
+    }
+
+    public void ChangeGameState(GameState newState) {
+        currentGameState = newState;
     }
 }
