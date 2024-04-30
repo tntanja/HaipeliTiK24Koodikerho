@@ -46,6 +46,14 @@ public class PlayerController : MonoBehaviour
       Aim();
    }
 
+   private bool CheckGameState() {
+      if (GameManager.instance.IsGamePlay()) {
+         return true;
+      } else {
+         return false;
+      }
+   }
+   
    private void Shoot() {
       if (controls.Player.Shoot.triggered){
          Debug.Log("shoot nappula toimii");
