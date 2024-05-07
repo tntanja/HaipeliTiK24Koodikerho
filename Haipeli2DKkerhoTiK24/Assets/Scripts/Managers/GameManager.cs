@@ -13,19 +13,21 @@ public class GameManager : MonoBehaviour
     {
         if(instance == null) {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         } else {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
+
+        controls = new Master();
     }
 
     private void OnEnable() {
       controls.Enable();   
-   }
+    }
 
-   private void OnDisable() {
+     private void OnDisable() {
       controls.Disable(); 
-   }
+    }
 
     public bool IsGamePlay() {
         return currentGameState == GameState.Gameplay;
@@ -33,5 +35,19 @@ public class GameManager : MonoBehaviour
 
     public void ChangeGameState(GameState newState) {
         currentGameState = newState;
+    }
+
+    private void Update() {
+        GamePause();
+    }
+
+    private void GamePause() {
+        if (controls.Game.Pause.triggered) {
+            if(IsGamePlay()) {
+                ChangeGameState(GameState.Pause);
+            } else {
+                ChangeGameState(GameState.Gameplay);
+            }
+        }
     }
 }
