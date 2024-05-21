@@ -31,6 +31,10 @@ public class PlayerController : MonoBehaviour
 
    // käytetään fysiikkaan liittyvissä updatessa
    private void FixedUpdate(){
+      if(CheckGameState() == false) {
+         return;
+      }
+
       Move();
    }
 

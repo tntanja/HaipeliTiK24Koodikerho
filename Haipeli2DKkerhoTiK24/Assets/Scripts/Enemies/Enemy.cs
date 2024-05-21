@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     private float currentSpeed = 3;
     private Rigidbody2D body;
@@ -37,5 +37,12 @@ public class Enemy : MonoBehaviour
         if(playerTransform == null){
             playerTransform = GameManager.instance.playerController.transform;
         }
+    }
+
+    public void TakeDamage(int damage) {
+        Debug.Log("osui " + damage);
+    }
+    public void Die() {
+        Debug.Log(" Die ");
     }
 }

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameState currentGameState;
     private Master controls;
+
+    public PlayerController playerController { get; set; }
     
     void Awake()
     {
